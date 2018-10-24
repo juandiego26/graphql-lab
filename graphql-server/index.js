@@ -1,10 +1,13 @@
 const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
 const { typeDefs, resolvers } = require('./schema')
+const mocks = require('./mock')
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  mocks,
+  mockEntireSchema: false,
 })
 
 const app = express()
