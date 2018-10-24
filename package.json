@@ -1,0 +1,23 @@
+{
+  "name": "graphql-server-course",
+  "version": "0.1.0",
+  "description": "graphql server with apollo server",
+  "main": "index.js",
+  "repository": "https://github.com/juandiego26/graphql-lab",
+  "author": "Juan Diego Silva <silgajuandiego>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./graphql-server/index.js"
+  },
+  "dependencies": {
+    "apollo-server": "2.1.0",
+    "apollo-server-express": "2.1.0",
+    "express": "4.16.4",
+    "graphql": "14.0.2",
+    "graphql-tools": "4.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  }
+}
