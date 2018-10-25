@@ -1,4 +1,6 @@
 const { gql } = require('apollo-server-express')
+const Curso = require('./models/Curso')
+const Profesor = require('./models/Profesor')
 
 const typeDefs = gql`
   """Esto es un curso del sistema"""
@@ -41,33 +43,10 @@ const typeDefs = gql`
 // los resolvers es como el controlador en el MVC
 const resolvers = {
   Query: {
-    cursos: () => {
-      return [{
-        id: 1,
-        titulo: 'Curso de GraphQL',
-        description: 'Aprendiendo GraphQL'
-      },
-      {
-        id: 2,
-        titulo: 'Curso de PHP',
-        description: 'Aprendiendo PHP'
-      }]
-    }
-  },
-  Curso: {
-    profesor: () => {
-      return {
-        nombre: 'Pablo',
-        nacionalidad: 'Colombia'
-      }
-    },
-    comentarios: () => {
-      return [{
-        id: 1,
-        nombre: "Juan",
-        cuerpo: "Buen Video!"
-      }]
-    }
+    cursos: () => Curso.query().eager('[profesor, comentarios]'),
+    profesores: () => Profesor.query().eager('cursos'),
+    curso: (rootValue, args) => Curso.query().eager('[profesor, comentarios]').findById(args.id),
+    profesor: (rootValue, args) => Profesor.query().eager('cursos').findById(args.id)
   }
 }
 
