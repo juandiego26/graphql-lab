@@ -8,7 +8,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nodemon ./graphql-server/index.js"
+    "start": "nodemon ./graphql-server/index.js",
+    "db:migrate": "knex migrate:latest --knexfile=graphql-server/db/knexfile.js",
+    "db:seed": "knex seed:run --knexfile=graphql-server/db/knexfile.js"
   },
   "dependencies": {
     "apollo-server": "2.1.0",
@@ -16,7 +18,10 @@
     "casual": "1.5.19",
     "express": "4.16.4",
     "graphql": "14.0.2",
-    "graphql-tools": "4.0.2"
+    "graphql-tools": "4.0.2",
+    "knex": "0.15.2",
+    "objection": "1.4.0",
+    "sqlite3": "4.0.3"
   },
   "devDependencies": {
     "nodemon": "1.18.4"
