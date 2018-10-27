@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express')
 const Profesor = require('./Profesor')
+const resolvers = require('../resolvers')
 const Curso = require('./Curso')
 
 const rootQuery = gql`
@@ -15,8 +16,12 @@ const rootQuery = gql`
     profesorAdd(profesor: NuevoProfesor): Profesor
     profesorEdit(profesorId: Int!, profesor: ProfesorEditable): Profesor
     profesorDelete(profesorId: Int!): Profesor
+
+    cursoAdd(curso: NuevoCurso): Curso
+    cursoEdit(cursoId: Int!, curso: CursoEditable): Curso
+    cursoDelete(cursoId: Int! ): Curso
   }
 `
 const typeDefs = [rootQuery, Profesor, Curso]
 
-module.exports = typeDefs
+module.exports = { typeDefs, resolvers}

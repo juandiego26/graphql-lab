@@ -5,7 +5,7 @@ module.exports = `
     id: ID!
     titulo: String!
     """Esta es la description"""
-    description: String!
+    descripcion: String!
     profesor: Profesor
     rating: Float @deprecated(reason: "No creemos más en los puntajes")
     comentarios: [Comentario]
@@ -15,5 +15,17 @@ module.exports = `
     id: ID!
     nombre: String!
     cuerpo: String!
+  }
+
+  input NuevoCurso {
+    titulo: String!
+    descripcion: String!
+    rating: Float
+  }
+
+  input CursoEditable {
+    titulo: String
+    descripcion: String
+    rating: Float
   }
 `

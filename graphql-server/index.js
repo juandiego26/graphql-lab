@@ -1,8 +1,9 @@
 const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
-const typeDefs = require('./schema') // JS cuando es un index el sabe que exporta
-const resolvers = require('./resolvers')
-const mocks = require('./mock')
+// const typeDefs = require('./schema') // JS cuando es un index el sabe que exporta
+const { typeDefs, resolvers } = require('./schema')
+// const resolvers = require('./resolvers')
+// const mocks = require('./mock')
 require('./db/setup')
 
 const server = new ApolloServer({
