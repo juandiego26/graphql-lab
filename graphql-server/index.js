@@ -8,8 +8,8 @@ require('./db/setup')
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  mocks,
-  mockEntireSchema: false, // para anular los datos mocks y se resuelva las peticiones con los Resolvers
+  // mocks,
+  // mockEntireSchema: false, // para anular los datos mocks y se resuelva las peticiones con los Resolvers
 })
 
 const app = express()
