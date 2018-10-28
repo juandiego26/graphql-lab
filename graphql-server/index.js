@@ -9,6 +9,14 @@ require('./db/setup')
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  formatError: error => {
+    return {
+      code: 'A43',
+      name: error.name,
+      message: error.message
+    }
+  }
+
   // mocks,
   // mockEntireSchema: false, // para anular los datos mocks y se resuelva las peticiones con los Resolvers
 })

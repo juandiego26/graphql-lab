@@ -46,8 +46,9 @@ const resolvers = {
     /** Con Async Await**** */
     profesorDelete: async (_, args) => {
       const profesorDeleted = await Profesor.query().findById(args.profesorId)
-      await Profesor.query().deleteById(args.profesorId)
-      return profesorDeleted
+      const deletedRows = await Profesor.query().deleteById(args.profesorId)
+      if (deletedRows > 0) return profesorDeleted
+      throw new Error(`El profesor con id: ${args.profesorId} no se pudo eliminar`)
     },
 
     cursoAdd: async (_, args) => {
