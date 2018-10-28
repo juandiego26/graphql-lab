@@ -4,12 +4,16 @@ const resolvers = require('../resolvers')
 const Curso = require('./Curso')
 
 const rootQuery = gql`
+  # Type union para definir una busqueda
+  union ResultadoBusqueda = Profesor | Curso
+
   # root type Query donde definimos nuestros endpoints o el routing
   type Query {
     cursos: [Curso]
     profesores: [Profesor]
     curso(id: Int): Curso
     profesor(id: Int): Profesor
+    buscar(query: String!): [ResultadoBusqueda]
   }
   # type Mutation donde definimos los entry points que van a modificar los datos en el servidor
   type Mutation {
